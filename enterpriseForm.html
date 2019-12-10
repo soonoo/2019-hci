@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>committrs</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+  </head>
+  <body>
+    <div class='TopHeader'>
+      <div style='width: 100%; padding: 12px;'>
+        <button class='TopHeaderBackButton'>&lt;</button>
+        <div class='TopHeaderContent'>관심 프로젝트 등록</div>
+      </div>
+    </div>
+    <div class='Wrap' style='padding: 150px 0 0 0;'>
+      <form id='LoginForm' action='enterprise.html'>
+        <div class='UserId'><input placeholder='관심 프로젝트 이름' required id='ProjectName' /></div>
+        <div class='LoginButton'><button type='submit'>등록</button></div>
+      </form>
+    </div>
+    <script>
+      window.onload = function() {
+        const backButton = document.querySelector('.TopHeaderBackButton');
+        backButton.onclick = function() {
+          try {
+            window.history.back();
+          } catch(e) {
+          }
+        }
+
+        const loginForm = document.querySelector('#LoginForm');
+        loginForm.onsubmit = function(e) {
+          try {
+            alert('등록되었습니다.');
+          } catch(e) {
+            console.log(e)
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
+

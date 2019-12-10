@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>committrs</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+  </head>
+  <body>
+    <div class='TopHeader'>
+      <div style='width: 100%; padding: 12px;'>
+        <button class='TopHeaderBackButton'>&lt;</button>
+        <div class='TopHeaderContent'>기여 이력 등록</div>
+      </div>
+    </div>
+    <div class='Wrap'>
+      <div style='margin-top: 200px;'><button class='ButtonWrap'><a href='userForm.html'>기여 이력 등록</a></button></div>
+      <div><button class='ButtonWrap'><a href='profile.html'>내 프로필 보기</a></button></div>
+    </div>
+    <script>
+      window.onload = function() {
+        const backButton = document.querySelector('.TopHeaderBackButton');
+        backButton.onclick = function() {
+          try {
+            window.history.back();
+          } catch(e) {
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

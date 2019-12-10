@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>committrs</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+  </head>
+  <body>
+    <div class='TopHeader'>
+      <div style='width: 100%; padding: 12px;'>
+        <button class='TopHeaderBackButton'>&lt;</button>
+        <div class='TopHeaderContent'>내 프로필 보기</div>
+      </div>
+    </div>
+    <div class='Wrap' style='padding: 80px 20px 0 20px; align-items: flex-start;'>
+    </div>
+    <script>
+      window.onload = function() {
+        const backButton = document.querySelector('.TopHeaderBackButton');
+        backButton.onclick = function() {
+          try {
+            window.history.back();
+          } catch(e) {
+          }
+        }
+
+        try {
+          const projects = JSON.parse(window.localStorage.getItem('projects') || '[]');
+
+          let list = '<div>';
+          for(const p of projects) {
+            list += `
+              <div style='margin-bottom: 20px;'>
+                <div>프로젝트 이름: ${p.projectName}</div>
+                <div>프로젝트 링크: <a href='${p.projectLink}'>${p.projectLink}</a></div>
+              </div>
+            `;
+          }
+
+          list += '</div>';
+          document.querySelector('.Wrap').innerHTML = list;
+        } catch(e) {
+          console.log(e)
+        }
+      }
+    </script>
+  </body>
+</html>
+

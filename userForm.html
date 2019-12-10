@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>committrs</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+  </head>
+  <body>
+    <div class='TopHeader'>
+      <div style='width: 100%; padding: 12px;'>
+        <button class='TopHeaderBackButton'>&lt;</button>
+        <div class='TopHeaderContent'>기여 이력 등록</div>
+      </div>
+    </div>
+    <div class='Wrap' style='padding: 150px 0 0 0;'>
+      <form id='LoginForm' action='profile.html'>
+        <div class='UserId'><input placeholder='프로젝트명' required id='ProjectName' /></div>
+        <div class='UserPw'><input placeholder='프로젝트 링크' required id='ProjectLink' /></div>
+        <div class='LoginButton'><button type='submit'>등록</button></div>
+      </form>
+    </div>
+    <script>
+      window.onload = function() {
+        const backButton = document.querySelector('.TopHeaderBackButton');
+        backButton.onclick = function() {
+          try {
+            window.history.back();
+          } catch(e) {
+          }
+        }
+
+        const loginForm = document.querySelector('#LoginForm');
+        loginForm.onsubmit = function(e) {
+          try {
+            const projectName = document.querySelector('#ProjectName').value;
+            const projectLink = document.querySelector('#ProjectLink').value;
+
+            const projects = JSON.parse(window.localStorage.getItem('projects') || '[]');
+            projects.push({ projectName, projectLink });
+            console.log(projects)
+
+            window.localStorage.setItem('projects', JSON.stringify(projects));
+          } catch(e) {
+            console.log(e)
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

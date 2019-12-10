@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>committrs</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+  </head>
+  <body>
+    <div class='TopHeader'>
+      <div style='width: 100%; padding: 12px;'>
+        <button class='TopHeaderBackButton'>&lt;</button>
+        <div class='TopHeaderContent'></div>
+      </div>
+    </div>
+    <div class='Wrap'>
+      <div style='margin-top: 200px;'><button class='ButtonWrap'><a href='personal.html'>개인 사용자</a></button></div>
+      <div><button class='ButtonWrap'><a href='enterprise.html'>기업 사용자</a></button></div>
+    </div>
+    <script>
+      window.onload = function() {
+        const header = document.querySelector('.TopHeaderContent');
+
+        try {
+          const urlParams = new URLSearchParams(window.location.search);
+          const username = urlParams.get('username');
+          if(!username) {
+            window.location.href = '/';
+          }
+
+          header.innerHTML = `환영합니다 ${username}님`;
+        } catch(e) {
+          header.innerHTML = `환영합니다.`;
+        }
+
+        const backButton = document.querySelector('.TopHeaderBackButton');
+        backButton.onclick = function() {
+          try {
+            window.history.back();
+          } catch(e) {
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

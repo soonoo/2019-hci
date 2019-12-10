@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>committrs</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+  </head>
+  <body>
+    <div class='TopHeader'>
+      <div style='width: 100%; padding: 12px;'>
+        <button class='TopHeaderBackButton'>&lt;</button>
+        <div class='TopHeaderContent'>구직자 탐색</div>
+      </div>
+    </div>
+    <div class='Wrap' style='padding: 50px 10px 10px 10px;'>
+      <h2>등록한 관심 프로젝트에 참여한 구직자 목록입니다.</h2>
+      <div>
+        <div style='margin-bottom: 20px; font-size: 20px;'>홍순우</div>
+        <div style='margin-bottom: 20px; font-size: 20px;'>홍길동</div>
+        <div style='margin-bottom: 20px; font-size: 20px;'>빌 게이츠</div>
+        <div style='margin-bottom: 20px; font-size: 20px;'>팀 쿡</div>
+        <div style='margin-bottom: 20px; font-size: 20px;'>폴 앨런</div>
+        <div style='margin-bottom: 20px; font-size: 20px;'>스티브 잡스</div>
+      </div>
+    </div>
+    <script>
+      window.onload = function() {
+        const backButton = document.querySelector('.TopHeaderBackButton');
+        backButton.onclick = function() {
+          try {
+            window.history.back();
+          } catch(e) {
+          }
+        }
+
+        const loginForm = document.querySelector('#LoginForm');
+        loginForm.onsubmit = function(e) {
+          try {
+            const projectName = document.querySelector('#ProjectName').value;
+            const projectLink = document.querySelector('#ProjectLink').value;
+
+            const projects = JSON.parse(window.localStorage.getItem('projects') || '[]');
+            projects.push({ projectName, projectLink });
+            console.log(projects)
+
+            window.localStorage.setItem('projects', JSON.stringify(projects));
+          } catch(e) {
+            console.log(e)
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
